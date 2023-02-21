@@ -27,9 +27,6 @@ struct GameView: View {
                     .foregroundColor(.green.opacity(0.5))
             }.ignoresSafeArea()
         }
-        .onAppear{
-            gameViewModel.startTimer()
-        }
     }
 }
 

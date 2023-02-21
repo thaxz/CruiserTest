@@ -13,13 +13,17 @@ class GameViewModel: ObservableObject {
     var publisher : Timer?
     @Published var index = 0
     
+    init(){
+        startTimer()
+    }
+    
     func startTimer() {
             index = 0
             publisher = Timer.scheduledTimer(withTimeInterval: 0.25, repeats: true, block: {_ in
                 if self.index < 7 {
                     self.index += 1
                     print(self.index)
-                } else if let timer = self.publisher {
+                } else if self.publisher != nil {
                     self.index = 0
                     //timer.invalidate()
                 }
