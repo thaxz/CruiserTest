@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct CruiserTesteApp: App {
+    @StateObject private var gameViewModel = GameViewModel()
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            GameView()
+                .environmentObject(gameViewModel)
         }
     }
 }
+
