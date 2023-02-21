@@ -10,15 +10,21 @@ import SwiftUI
 
 class GameViewModel: ObservableObject {
     
-    var characterSprint: [String] = []
-
-    init() {
-        for i in 1...8 {
-            let imageNames = "attack_0\(i)"
-            characterSprint.append(imageNames)
-        }
-    }
+    var publisher : Timer?
+    @Published var index = 0
     
+    func startTimer() {
+            index = 0
+            publisher = Timer.scheduledTimer(withTimeInterval: 0.25, repeats: true, block: {_ in
+                if self.index < 7 {
+                    self.index += 1
+                    print(self.index)
+                } else if let timer = self.publisher {
+                    self.index = 0
+                    //timer.invalidate()
+                }
+            })
+      }
     
     func setUpGame(){
         

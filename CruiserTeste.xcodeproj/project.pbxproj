@@ -14,7 +14,6 @@
 		E99CAF9C299E645300DA59E4 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99CAF9B299E645300DA59E4 /* GameView.swift */; };
 		E99CAF9E299E64EF00DA59E4 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99CAF9D299E64EF00DA59E4 /* GameViewModel.swift */; };
 		E99CAFA0299E65B800DA59E4 /* PreviewProviderExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99CAF9F299E65B800DA59E4 /* PreviewProviderExtension.swift */; };
-		E99EEC3129A51DD2006ABC1A /* AnimateImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99EEC3029A51DD2006ABC1A /* AnimateImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,7 +25,6 @@
 		E99CAF9B299E645300DA59E4 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		E99CAF9D299E64EF00DA59E4 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
 		E99CAF9F299E65B800DA59E4 /* PreviewProviderExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewProviderExtension.swift; sourceTree = "<group>"; };
-		E99EEC3029A51DD2006ABC1A /* AnimateImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimateImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,7 +61,6 @@
 				E9687BFF299D3146004040CD /* ContentView.swift */,
 				E99CAF9B299E645300DA59E4 /* GameView.swift */,
 				E99CAF9D299E64EF00DA59E4 /* GameViewModel.swift */,
-				E99EEC3029A51DD2006ABC1A /* AnimateImage.swift */,
 				E9687C01299D3147004040CD /* Assets.xcassets */,
 				E9687C03299D3147004040CD /* Preview Content */,
 				E99CAF9F299E65B800DA59E4 /* PreviewProviderExtension.swift */,
@@ -154,7 +151,6 @@
 				E9687C00299D3146004040CD /* ContentView.swift in Sources */,
 				E99CAF9C299E645300DA59E4 /* GameView.swift in Sources */,
 				E9687BFE299D3146004040CD /* CruiserTesteApp.swift in Sources */,
-				E99EEC3129A51DD2006ABC1A /* AnimateImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

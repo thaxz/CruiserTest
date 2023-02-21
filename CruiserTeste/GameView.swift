@@ -8,23 +8,30 @@
 import SwiftUI
 
 struct GameView: View {
+    
+    let images = (0...7).map { UIImage(named: "attack_0\($0)") ?? UIImage(named: "test_01")
+    }
     @EnvironmentObject var gameViewModel: GameViewModel
+    
     var body: some View {
         ZStack {
             Color.blue.opacity(0.5)
                 .ignoresSafeArea()
             VStack(spacing: 100){
                 Spacer()
-                Rectangle()
-                    .frame(width: 200, height: 300)
+                Group {
+                    Image(uiImage: images[gameViewModel.index]!)
+                        .resizable()
+                        .frame(width: 200, height: 300)
                     .foregroundColor(.purple.opacity(0.8))
-                AnimateImage(imageNames: gameViewModel.characterSprint)
-                   // .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height / 3)
-                   // .foregroundColor(.green.opacity(0.5))
+                }
+                Rectangle()
+                    .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height / 3)
+                    .foregroundColor(.green.opacity(0.5))
             }.ignoresSafeArea()
         }
         .onAppear{
-            
+            gameViewModel.startTimer()
         }
     }
 }
