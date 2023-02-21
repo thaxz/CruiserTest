@@ -9,8 +9,8 @@ import SwiftUI
 
 struct GameView: View {
     
-    let images = (0...7).map { UIImage(named: "attack_0\($0)") ?? UIImage(named: "test_01")
-    }
+    let images = (0...7).map { UIImage(named: "attack_0\($0)")!}
+    
     @EnvironmentObject var gameViewModel: GameViewModel
     
     var body: some View {
@@ -19,12 +19,9 @@ struct GameView: View {
                 .ignoresSafeArea()
             VStack(spacing: 100){
                 Spacer()
-                Group {
-                    Image(uiImage: images[gameViewModel.index]!)
-                        .resizable()
-                        .frame(width: 200, height: 300)
-                    .foregroundColor(.purple.opacity(0.8))
-                }
+                Image(uiImage: images[gameViewModel.index])
+                    .resizable()
+                    .frame(width: 200, height: 300)
                 Rectangle()
                     .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height / 3)
                     .foregroundColor(.green.opacity(0.5))
