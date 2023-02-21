@@ -22,10 +22,12 @@ struct GameView: View {
                 Image(uiImage: images[gameViewModel.index])
                     .resizable()
                     .frame(width: 200, height: 300)
-                Rectangle()
+                    .rotationEffect(gameViewModel.playerRotation)
+                Image("street")
                     .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height / 3)
-                    .foregroundColor(.green.opacity(0.5))
-            }.ignoresSafeArea()
+                    .rotationEffect(gameViewModel.planetRotation, anchor: .center)
+            }
+            //.ignoresSafeArea()
         }
     }
 }
