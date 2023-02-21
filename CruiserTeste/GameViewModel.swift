@@ -20,8 +20,8 @@ class GameViewModel: ObservableObject {
     
     var showGameOver: Bool = false
     
-    @Published var playerRotation: Angle = Angle(degrees: 0)
-    @Published var planetRotation: Angle = Angle(degrees: 0)
+    @Published var playerRotation: Angle = Angle(radians: 0)
+    @Published var planetRotation: Angle = Angle(radians: 0)
     
     lazy var motionManager = CMMotionManager()
     
@@ -56,8 +56,8 @@ class GameViewModel: ObservableObject {
         // pegando a data que começou
         startDate = Date()
         // resetando angulos
-        self.playerRotation = Angle(degrees: 0)
-        self.planetRotation = Angle(degrees: 0)
+        self.playerRotation = Angle(radians: 0)
+        self.planetRotation = Angle(radians: 0)
         
         // verificando se os sensores do dispositivo estão disponíveis
         if motionManager.isDeviceMotionAvailable {
@@ -72,7 +72,7 @@ class GameViewModel: ObservableObject {
                         // lógica
                         let angle = atan2(data.gravity.x, data.gravity.y) - .pi
                         // aplicando isso no angulo do player
-                        self.playerRotation = Angle(degrees: angle)
+                        self.playerRotation = Angle(radians: angle)
                         // se não estiver movimentando a terra, irá verificar se é gameover
                         if !self.isMoving {
                             self.checkGameOver()
@@ -93,7 +93,7 @@ class GameViewModel: ObservableObject {
         let randomAngle = Double(arc4random_uniform(120))/100 - 0.6
         print(randomAngle)
         isMoving = true
-        planetRotation = Angle(degrees: randomAngle)
+        planetRotation = Angle(radians: randomAngle)
         // animando
         
     }
