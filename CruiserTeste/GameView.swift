@@ -17,17 +17,19 @@ struct GameView: View {
         ZStack {
             Color.blue.opacity(0.5)
                 .ignoresSafeArea()
-            VStack(spacing: 100){
+            VStack(spacing: 80){
                 Spacer()
                 Image(uiImage: images[gameViewModel.index])
                     .resizable()
                     .frame(width: 200, height: 300)
-                    .rotationEffect(gameViewModel.playerRotation)
+                    .rotationEffect(gameViewModel.playerRotation, anchor: .center)
                 Image("street")
                     .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height / 3)
                     .rotationEffect(gameViewModel.planetRotation, anchor: .center)
             }
-            //.ignoresSafeArea()
+            .sheet(isPresented: $gameViewModel.showGameOver) {
+                GameOverView()
+            }
         }
     }
 }

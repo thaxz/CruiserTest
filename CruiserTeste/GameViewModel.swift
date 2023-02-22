@@ -13,12 +13,13 @@ class GameViewModel: ObservableObject {
     
     var sprintSheetTimer : Timer?
     @Published var index = 0
+    @Published var secondsPlayed: String = "error"
     
-    var isMoving: Bool = false
+    @Published var isMoving: Bool = false
     var gameTimer: Timer?
     var startDate: Date?
     
-    var showGameOver: Bool = false
+    @Published var showGameOver: Bool = false
     
     @Published var playerRotation: Angle = Angle(radians: 0)
     @Published var planetRotation: Angle = Angle(radians: 0)
@@ -95,12 +96,31 @@ class GameViewModel: ObservableObject {
         isMoving = true
         planetRotation = Angle(radians: randomAngle)
         // animando
-        
     }
     
-    // MARK: Angulos n funcionando
     func checkGameOver(){
-       
+        // vai pegar o angulo do jogador e do mundo e comparar
+        // angulo do mundo
+        let worldAngle = atan2(Double(planetRotation.transform.a), Double(planetRotation.transform.b))
+        // do jogador
+        let playerAngle = atan2(Double(player.transform.a), Double(player.transform.b))
+        // calculando a diferença, pegando apenas o valor positivo
+        let difference = abs(worldAngle - playerAngle)
+        // se não estiver dentro daquela área vermelha
+        if difference > 0.25 {
+            // para de repetir o timer
+            if let gameTimer = gameTimer {
+                gameTimer.invalidate()
+            }
+            // aparece a tela
+            showGameOver = true
+            // para de checar os updates
+            motionManager.stopDeviceMotionUpdates()
+            // quanto tempo se passou até o gameOver
+            if let startDate = startDate {
+                secondsPlayed = String(round(Date().timeIntervalSince(startDate)))
+            }
+        }
     }
     
     func playAgain(){
