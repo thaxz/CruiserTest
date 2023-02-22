@@ -46,9 +46,9 @@ class GameViewModel: ObservableObject {
     func setUpGame(){
         showGameOver = false
         animateSpaceship()
-        Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false) { (timer) in
+        //Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false) { (timer) in
             self.startGame()
-        }
+        //}
     }
     
     func startGame(){
@@ -69,7 +69,7 @@ class GameViewModel: ObservableObject {
                     // desembrulhando
                     if let data = data {
                         //printando as informações dos eixos
-                        print("x: ", data.gravity.x, "y: ", data.gravity.y, "z: ", data.gravity.z)
+                        //print("x: ", data.gravity.x, "y: ", data.gravity.y, "z: ", data.gravity.z)
                         // lógica
                         let angle = CGFloat(atan2(data.gravity.x, data.gravity.y) - .pi)
                         // aplicando isso no angulo do player
@@ -84,7 +84,6 @@ class GameViewModel: ObservableObject {
         }
         // nível default terra gira a 4s
         gameTimer = Timer.scheduledTimer(withTimeInterval: 4, repeats: true, block: { (timer) in
-            self.isMoving.toggle()
             self.rotateWorld()
         })
         
@@ -94,9 +93,13 @@ class GameViewModel: ObservableObject {
         // Irá gerar um ângulo aleatório e rotacionar a terra a partir
         let randomAngle = Double(arc4random_uniform(120))/100 - 0.6
         print(randomAngle)
-        //isMoving = true
+        isMoving = true
+        print("######## IS MOVING")
         planetRotation = CGAffineTransform(rotationAngle: randomAngle)
-        // animando
+        Timer.scheduledTimer(withTimeInterval: 0.75, repeats: false, block: { (timer) in
+            self.isMoving = false
+            print("STOPPED MOVING#####")
+        })
     }
     
     func checkGameOver(){
@@ -116,6 +119,7 @@ class GameViewModel: ObservableObject {
             }
             // aparece a tela
             showGameOver = true
+            print("GAME OVER!!!!!1")
             // para de checar os updates
             motionManager.stopDeviceMotionUpdates()
             // quanto tempo se passou até o gameOver

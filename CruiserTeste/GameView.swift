@@ -29,9 +29,9 @@ struct GameView: View {
                     //.rotationEffect(gameViewModel.planetRotation, anchor: .center)
                     .transformEffect(gameViewModel.planetRotation)
             }
-            .sheet(isPresented: $gameViewModel.showGameOver) {
-                GameOverView()
-            }
+//            .sheet(isPresented: $gameViewModel.showGameOver) {
+//                GameOverView()
+//            }
         }
     }
 }
