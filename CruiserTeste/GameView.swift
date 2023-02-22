@@ -22,10 +22,12 @@ struct GameView: View {
                 Image(uiImage: images[gameViewModel.index])
                     .resizable()
                     .frame(width: 200, height: 300)
-                    .rotationEffect(gameViewModel.playerRotation, anchor: .center)
+                    //.rotationEffect(gameViewModel.playerRotation, anchor: .center)
+                    .transformEffect(gameViewModel.playerRotation)
                 Image("street")
                     .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height / 3)
-                    .rotationEffect(gameViewModel.planetRotation, anchor: .center)
+                    //.rotationEffect(gameViewModel.planetRotation, anchor: .center)
+                    .transformEffect(gameViewModel.planetRotation)
             }
             .sheet(isPresented: $gameViewModel.showGameOver) {
                 GameOverView()

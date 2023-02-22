@@ -40,7 +40,8 @@ struct GameOverView: View {
                     }
                     Spacer()
                     Button {
-                        //play again
+                        //gameViewModel.playAgain()
+                        //gameViewModel.showGameOver.toggle()
                     } label: {
                         ZStack {
                             Rectangle()
