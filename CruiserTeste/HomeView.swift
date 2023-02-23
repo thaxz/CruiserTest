@@ -32,6 +32,20 @@ struct HomeView: View {
                 } .padding(16)
                 
                 Button {
+                    gameViewModel.gameScene = .tutorial
+                } label: {
+                    ZStack {
+                        Rectangle()
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 55)
+                            .foregroundColor(.white)
+                        Text("INSTRUCTIONS")
+                            .font(.system(size: 32, weight: .bold))
+                        .foregroundColor(.purple)
+                    }
+                } .padding(16)
+                
+                Button {
                     gameViewModel.gameScene = .credits
                 } label: {
                     ZStack {
@@ -43,7 +57,6 @@ struct HomeView: View {
                             .font(.system(size: 32, weight: .bold))
                         .foregroundColor(.purple)
                     }
-                    
                 } .padding(16)
             }
         }

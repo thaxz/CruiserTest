@@ -26,6 +26,9 @@ struct ContentView: View {
         case .credits:
             CreditsView()
                 .environmentObject(gameViewModel)
+        case .tutorial:
+            TutorialView()
+                .environmentObject(gameViewModel)
         }
     }
 }

@@ -15,6 +15,7 @@
 		E99CAF9E299E64EF00DA59E4 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99CAF9D299E64EF00DA59E4 /* GameViewModel.swift */; };
 		E99CAFA0299E65B800DA59E4 /* PreviewProviderExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99CAF9F299E65B800DA59E4 /* PreviewProviderExtension.swift */; };
 		E9E2EAE329A78DAB001924FE /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E2EAE229A78DAB001924FE /* Utilities.swift */; };
+		E9E2EAE729A7AF02001924FE /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E2EAE629A7AF02001924FE /* TutorialView.swift */; };
 		E9FE32E329A685A0003DE808 /* GameOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FE32E229A685A0003DE808 /* GameOverView.swift */; };
 		E9FE32E729A6FF70003DE808 /* CreditsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FE32E629A6FF70003DE808 /* CreditsView.swift */; };
 		E9FE32E929A6FF90003DE808 /* LevelsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FE32E829A6FF90003DE808 /* LevelsView.swift */; };
@@ -32,6 +33,7 @@
 		E99CAF9D299E64EF00DA59E4 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
 		E99CAF9F299E65B800DA59E4 /* PreviewProviderExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewProviderExtension.swift; sourceTree = "<group>"; };
 		E9E2EAE229A78DAB001924FE /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		E9E2EAE629A7AF02001924FE /* TutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
 		E9FE32E229A685A0003DE808 /* GameOverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverView.swift; sourceTree = "<group>"; };
 		E9FE32E629A6FF70003DE808 /* CreditsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsView.swift; sourceTree = "<group>"; };
 		E9FE32E829A6FF90003DE808 /* LevelsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelsView.swift; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 				E9FE32E629A6FF70003DE808 /* CreditsView.swift */,
 				E9FE32E829A6FF90003DE808 /* LevelsView.swift */,
 				E9FE32EA29A6FF9E003DE808 /* DialogueView.swift */,
+				E9E2EAE629A7AF02001924FE /* TutorialView.swift */,
 				E9687C01299D3147004040CD /* Assets.xcassets */,
 				E9687C03299D3147004040CD /* Preview Content */,
 				E99CAF9F299E65B800DA59E4 /* PreviewProviderExtension.swift */,
@@ -172,6 +175,7 @@
 				E9FE32E729A6FF70003DE808 /* CreditsView.swift in Sources */,
 				E99CAF9E299E64EF00DA59E4 /* GameViewModel.swift in Sources */,
 				E9687C00299D3146004040CD /* ContentView.swift in Sources */,
+				E9E2EAE729A7AF02001924FE /* TutorialView.swift in Sources */,
 				E99CAF9C299E645300DA59E4 /* GameView.swift in Sources */,
 				E9FE32E329A685A0003DE808 /* GameOverView.swift in Sources */,
 				E9687BFE299D3146004040CD /* CruiserTesteApp.swift in Sources */,
