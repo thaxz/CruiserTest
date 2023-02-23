@@ -18,7 +18,7 @@ struct ContentView: View {
             LevelsView()
                 .environmentObject(gameViewModel)
         case .dialogue:
-            DialogueView()
+            DialogueView(level: gameViewModel.selectedLevel)
                 .environmentObject(gameViewModel)
         case .gameScreen:
             GameView()

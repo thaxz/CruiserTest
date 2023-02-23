@@ -9,12 +9,29 @@ import SwiftUI
 
 struct DialogueView: View {
     @EnvironmentObject var gameViewModel: GameViewModel
+    let level: GameLevels
+    var color: Color
+    var text: String
+    
+    init(level: GameLevels){
+        self.level = level
+        switch level {
+        case .earth:
+            self.color = .red
+            self.text = "EARTH DIALOGUE"
+        case .planet:
+            self.color = .blue
+            self.text = "PLANET DIALOGUE"
+        }
+    }
+
+    
     var body: some View {
         ZStack{
-            Color.red
+            color
                 .ignoresSafeArea()
             VStack{
-                Text("DIALOGUE VIEW")
+                Text(text)
                     .font(.system(size: 32, weight: .bold))
                     .foregroundColor(.white)
                 Button {
@@ -37,7 +54,7 @@ struct DialogueView: View {
 
 struct DialogueView_Previews: PreviewProvider {
     static var previews: some View {
-        DialogueView()
-            .environmentObject(dev.gameVM)
+        DialogueView(level: .earth)
+        .environmentObject(dev.gameVM)
     }
 }

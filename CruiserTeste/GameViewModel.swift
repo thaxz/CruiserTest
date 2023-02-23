@@ -12,7 +12,7 @@ import CoreMotion
 class GameViewModel: ObservableObject {
     
     @Published var gameScene: GameScenes = .home
-    @Published var selectedLevel: Int = 1
+    @Published var selectedLevel: GameLevels = .earth
     
     var sprintSheetTimer : Timer?
     @Published var index = 0

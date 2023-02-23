@@ -19,7 +19,7 @@ struct LevelsView: View {
                     .foregroundColor(.white)
                 HStack(spacing: 25) {
                     Button {
-                        gameViewModel.selectedLevel = 1
+                        gameViewModel.selectedLevel = .earth
                         gameViewModel.gameScene = .dialogue
                         gameViewModel.playAgain()
                     } label: {
@@ -33,7 +33,7 @@ struct LevelsView: View {
                         }
                     }
                     Button {
-                        gameViewModel.selectedLevel = 2
+                        gameViewModel.selectedLevel = .planet
                         gameViewModel.gameScene = .dialogue
                         gameViewModel.playAgain()
                     } label: {
