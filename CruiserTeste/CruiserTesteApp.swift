@@ -12,7 +12,7 @@ struct CruiserTesteApp: App {
     @StateObject private var gameViewModel = GameViewModel()
     var body: some Scene {
         WindowGroup {
-            GameView()
+            ContentView()
                 .environmentObject(gameViewModel)
         }
     }

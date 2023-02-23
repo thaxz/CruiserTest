@@ -11,6 +11,9 @@ import CoreMotion
 
 class GameViewModel: ObservableObject {
     
+    @Published var viewNumber: Int = 0
+    @Published var selectedLevel: Int = 1
+    
     var sprintSheetTimer : Timer?
     @Published var index = 0
     @Published var secondsPlayed: String = "error"

@@ -52,13 +52,15 @@ struct GameOverView: View {
                         }
                     }
                     Button {
-                        //menu
+                        gameViewModel.showGameOver = false
+                        gameViewModel.playAgain()
+                        gameViewModel.viewNumber = 0
                     } label: {
                         ZStack {
                             Rectangle()
                                 .frame(height: 55)
                                 .foregroundColor(.orange)
-                            Text("Level selection")
+                            Text("Main menu")
                                 .foregroundColor(.white)
                         }
                     }
