@@ -46,9 +46,9 @@ class GameViewModel: ObservableObject {
     func setUpGame(){
         showGameOver = false
         animateSpaceship()
-        //Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false) { (timer) in
+        Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false) { (timer) in
             self.startGame()
-        //}
+        }
     }
     
     func startGame(){
@@ -93,10 +93,12 @@ class GameViewModel: ObservableObject {
         // Irá gerar um ângulo aleatório e rotacionar a terra a partir
         let randomAngle = Double(arc4random_uniform(120))/100 - 0.6
         print(randomAngle)
-        isMoving = true
-        print("######## IS MOVING")
-        planetRotation = CGAffineTransform(rotationAngle: randomAngle)
-        Timer.scheduledTimer(withTimeInterval: 0.75, repeats: false, block: { (timer) in
+        withAnimation(.spring()){
+            isMoving = true
+            print("######## IS MOVING")
+            planetRotation = CGAffineTransform(rotationAngle: randomAngle)
+        }
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: { (timer) in
             self.isMoving = false
             print("STOPPED MOVING#####")
         })
@@ -112,20 +114,21 @@ class GameViewModel: ObservableObject {
         let difference = abs(worldAngle - playerAngle)
         
         // se não estiver dentro daquela área vermelha
-        if difference > 0.25 {
+        if difference > 0.40 {
             // para de repetir o timer
             if let gameTimer = gameTimer {
                 gameTimer.invalidate()
             }
-            // aparece a tela
-            showGameOver = true
-            print("GAME OVER!!!!!1")
             // para de checar os updates
             motionManager.stopDeviceMotionUpdates()
             // quanto tempo se passou até o gameOver
             if let startDate = startDate {
-                secondsPlayed = String(round(Date().timeIntervalSince(startDate)))
+                secondsPlayed = String(format: "%.2f", Date().timeIntervalSince(startDate))
+                //String(Date().timeIntervalSince(startDate))
             }
+            // aparece a tela
+            showGameOver = true
+            print("GAME OVER!!!!!1")
         }
     }
     

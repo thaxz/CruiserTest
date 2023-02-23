@@ -26,7 +26,7 @@ struct GameOverView: View {
                     HStack{
                         Text("Time traveling:")
                         Spacer()
-                        Text("12s")
+                        Text("\(gameViewModel.secondsPlayed)s")
                     }
                     HStack{
                         Text("Gravity force:")
@@ -40,8 +40,8 @@ struct GameOverView: View {
                     }
                     Spacer()
                     Button {
-                        //gameViewModel.playAgain()
-                        //gameViewModel.showGameOver.toggle()
+                        gameViewModel.playAgain()
+                        gameViewModel.showGameOver = false
                     } label: {
                         ZStack {
                             Rectangle()
