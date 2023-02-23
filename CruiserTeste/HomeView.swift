@@ -18,7 +18,7 @@ struct HomeView: View {
                     .font(.system(size: 32, weight: .bold))
                     .foregroundColor(.white)
                 Button {
-                   gameViewModel.viewNumber = 1
+                    gameViewModel.gameScene = .levels
                 } label: {
                     ZStack {
                         Rectangle()
@@ -32,7 +32,7 @@ struct HomeView: View {
                 } .padding(16)
                 
                 Button {
-                   gameViewModel.viewNumber = 4
+                    gameViewModel.gameScene = .credits
                 } label: {
                     ZStack {
                         Rectangle()

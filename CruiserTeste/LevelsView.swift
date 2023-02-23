@@ -20,7 +20,7 @@ struct LevelsView: View {
                 HStack(spacing: 25) {
                     Button {
                         gameViewModel.selectedLevel = 1
-                        gameViewModel.viewNumber = 2
+                        gameViewModel.gameScene = .dialogue
                         gameViewModel.playAgain()
                     } label: {
                         ZStack {
@@ -34,7 +34,7 @@ struct LevelsView: View {
                     }
                     Button {
                         gameViewModel.selectedLevel = 2
-                        gameViewModel.viewNumber = 2
+                        gameViewModel.gameScene = .dialogue
                         gameViewModel.playAgain()
                     } label: {
                         ZStack {

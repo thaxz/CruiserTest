@@ -18,7 +18,7 @@ struct CreditsView: View {
                     .font(.system(size: 32, weight: .bold))
                     .foregroundColor(.white)
                 Button {
-                    gameViewModel.viewNumber = 0
+                    gameViewModel.gameScene = .home
                 } label: {
                     ZStack {
                         Rectangle()

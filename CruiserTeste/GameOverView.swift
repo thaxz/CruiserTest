@@ -54,7 +54,7 @@ struct GameOverView: View {
                     Button {
                         gameViewModel.showGameOver = false
                         gameViewModel.playAgain()
-                        gameViewModel.viewNumber = 0
+                        gameViewModel.gameScene = .home
                     } label: {
                         ZStack {
                             Rectangle()

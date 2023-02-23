@@ -18,7 +18,7 @@ struct DialogueView: View {
                     .font(.system(size: 32, weight: .bold))
                     .foregroundColor(.white)
                 Button {
-                    gameViewModel.viewNumber = 3
+                    gameViewModel.gameScene = .gameScreen
                 } label: {
                     ZStack {
                         Rectangle()

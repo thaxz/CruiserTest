@@ -10,29 +10,22 @@ import SwiftUI
 struct ContentView: View {
     @EnvironmentObject var gameViewModel: GameViewModel
     var body: some View {
-        if gameViewModel.viewNumber == 0 {
+        switch gameViewModel.gameScene {
+        case .home:
             HomeView()
                 .environmentObject(gameViewModel)
-        } else if gameViewModel.viewNumber == 1 {
+        case .levels:
             LevelsView()
                 .environmentObject(gameViewModel)
-        } else if gameViewModel.viewNumber == 2 {
+        case .dialogue:
             DialogueView()
                 .environmentObject(gameViewModel)
-        } else if gameViewModel.viewNumber == 3 {
+        case .gameScreen:
             GameView()
                 .environmentObject(gameViewModel)
-        } else if gameViewModel.viewNumber == 4 {
+        case .credits:
             CreditsView()
                 .environmentObject(gameViewModel)
-        } else {
-            ZStack{
-                Color.gray
-                    .ignoresSafeArea()
-                Text("ERROR")
-                    .font(.system(size: 32, weight: .bold))
-                    .foregroundColor(.white)
-            }
         }
     }
 }
