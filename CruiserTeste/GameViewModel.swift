@@ -30,7 +30,9 @@ class GameViewModel: ObservableObject {
     lazy var motionManager = CMMotionManager()
     
     init(){
-        setUpGame()
+        if gameScene == .gameScreen{
+            setUpGame()
+        }
     }
     
     func animateSpaceship() {
@@ -49,7 +51,7 @@ class GameViewModel: ObservableObject {
     func setUpGame(){
         showGameOver = false
         animateSpaceship()
-        Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false) { (timer) in
+        Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false) { (timer) in
             self.startGame()
         }
     }
