@@ -18,6 +18,22 @@ enum GameScenes: String {
     case tutorial
 }
 
+struct Dialogues{
+    
+    let earth: [String] = [
+    "this is the first earth dialogue line",
+    "this is the second earth dialogue line",
+    "this is the third earth dialogue line",
+    ]
+    
+    let planet: [String] = [
+    "this is the first planet dialogue line",
+    "this is the second planet dialogue line",
+    "this is the third planet dialogue line",
+    ]
+    
+}
+
 enum GameLevels: String {
     
     case earth

@@ -8,43 +8,77 @@
 import SwiftUI
 
 struct DialogueView: View {
+    
     @EnvironmentObject var gameViewModel: GameViewModel
+    
     let level: GameLevels
-    var color: Color
-    var text: String
+    
+    let dialogue: [String]
+    
+    var backgroundImage: Color
+    var levelName: String
+    @State var dialoguePosition: Int = 0
     
     init(level: GameLevels){
         self.level = level
         switch level {
         case .earth:
-            self.color = .red
-            self.text = "EARTH DIALOGUE"
+            self.backgroundImage = .red
+            self.levelName = "EARTH STATION"
+            self.dialogue = Dialogues().earth
         case .planet:
-            self.color = .blue
-            self.text = "PLANET DIALOGUE"
+            self.backgroundImage = .blue
+            self.levelName = "PLANET STATIOM"
+            self.dialogue = Dialogues().planet
         }
     }
-
     
     var body: some View {
         ZStack{
-            color
+            backgroundImage
                 .ignoresSafeArea()
-            VStack{
-                Text(text)
-                    .font(.system(size: 32, weight: .bold))
-                    .foregroundColor(.white)
-                Button {
-                    gameViewModel.gameScene = .gameScreen
-                } label: {
-                    ZStack {
+            VStack(){
+                Spacer()
+                    .frame(height: 60)
+                HStack {
+                    Text(levelName)
+                        .padding(.leading)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .frame(height: 55)
+                        .background(.gray)
+                        .font(.system(size: 32, weight: .bold))
+                        .foregroundColor(.white)
+                    Spacer()
+                        .frame(width: 60)
+                }
+                Spacer()
+                VStack(alignment: .trailing){
+                    ZStack(alignment: .topLeading){
                         Rectangle()
-                            .frame(maxWidth: .infinity)
-                            .frame(height: 55)
+                            .foregroundColor(.gray)
+                        Text(dialogue[dialoguePosition])
                             .foregroundColor(.white)
-                        Text("NEXT")
-                            .font(.system(size: 32, weight: .bold))
-                        .foregroundColor(.red)
+                            .padding(16)
+                        
+                    }
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 160, alignment: .topLeading)
+                    
+                    Button {
+                            dialoguePosition += 1
+                        if dialoguePosition > 2 {
+                            dialoguePosition = 0
+                            gameViewModel.gameScene = .gameScreen
+                        }
+                    } label: {
+                        ZStack {
+                            Rectangle()
+                                .frame(width: 80,height: 40)
+                                .foregroundColor(.gray)
+                            Text("NEXT")
+                                .font(.system(size: 20, weight: .bold))
+                                .foregroundColor(.white)
+                        }
                     }
                 } .padding(16)
             }
@@ -55,6 +89,6 @@ struct DialogueView: View {
 struct DialogueView_Previews: PreviewProvider {
     static var previews: some View {
         DialogueView(level: .earth)
-        .environmentObject(dev.gameVM)
+            .environmentObject(dev.gameVM)
     }
 }
