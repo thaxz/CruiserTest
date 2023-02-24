@@ -12,9 +12,7 @@ struct DialogueView: View {
     @EnvironmentObject var gameViewModel: GameViewModel
     
     let level: GameLevels
-    
     let dialogue: [String]
-    
     var backgroundImage: Color
     var levelName: String
     @State var dialoguePosition: Int = 0
@@ -64,20 +62,37 @@ struct DialogueView: View {
                     .frame(maxWidth: .infinity)
                     .frame(height: 160, alignment: .topLeading)
                     
-                    Button {
-                            dialoguePosition += 1
-                        if dialoguePosition > 2 {
-                            dialoguePosition = 0
+                    HStack {
+                        Button {
                             gameViewModel.gameScene = .gameScreen
+                            dialoguePosition = 0
+                            
+                        } label: {
+                            ZStack {
+                                Rectangle()
+                                    .frame(width: 80,height: 40)
+                                    .foregroundColor(.gray)
+                                Text("SKIP")
+                                    .font(.system(size: 20, weight: .bold))
+                                    .foregroundColor(.white)
+                            }
                         }
-                    } label: {
-                        ZStack {
-                            Rectangle()
-                                .frame(width: 80,height: 40)
-                                .foregroundColor(.gray)
-                            Text("NEXT")
-                                .font(.system(size: 20, weight: .bold))
-                                .foregroundColor(.white)
+                        Spacer()
+                        Button {
+                            dialoguePosition += 1
+                            if dialoguePosition > 2 {
+                                dialoguePosition = 0
+                                gameViewModel.gameScene = .gameScreen
+                            }
+                        } label: {
+                            ZStack {
+                                Rectangle()
+                                    .frame(width: 80,height: 40)
+                                    .foregroundColor(.gray)
+                                Text("NEXT")
+                                    .font(.system(size: 20, weight: .bold))
+                                    .foregroundColor(.white)
+                            }
                         }
                     }
                 } .padding(16)
