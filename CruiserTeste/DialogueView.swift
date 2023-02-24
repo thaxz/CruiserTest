@@ -65,6 +65,7 @@ struct DialogueView: View {
                     HStack {
                         Button {
                             gameViewModel.gameScene = .gameScreen
+                            gameViewModel.setUpGame()
                             dialoguePosition = 0
                             
                         } label: {
@@ -80,9 +81,10 @@ struct DialogueView: View {
                         Spacer()
                         Button {
                             dialoguePosition += 1
-                            if dialoguePosition > 2 {
+                            if dialoguePosition == 3 {
                                 dialoguePosition = 0
-                                gameViewModel.gameScene = .gameScreen
+                                    gameViewModel.gameScene = .gameScreen
+                                    gameViewModel.setUpGame()
                             }
                         } label: {
                             ZStack {

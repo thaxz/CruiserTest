@@ -30,9 +30,9 @@ class GameViewModel: ObservableObject {
     lazy var motionManager = CMMotionManager()
     
     init(){
-        if gameScene == .gameScreen{
-            setUpGame()
-        }
+//        if gameScene == .gameScreen{
+//            setUpGame()
+//        }
     }
     
     func animateSpaceship() {
@@ -49,10 +49,10 @@ class GameViewModel: ObservableObject {
       }
     
     func setUpGame(){
-        showGameOver = false
         animateSpaceship()
         Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false) { (timer) in
             self.startGame()
+            self.showGameOver = false
         }
     }
     
@@ -89,7 +89,9 @@ class GameViewModel: ObservableObject {
         }
         // nível default terra gira a 4s
         gameTimer = Timer.scheduledTimer(withTimeInterval: 4, repeats: true, block: { (timer) in
-            self.rotateWorld()
+            if self.showGameOver == false {
+                self.rotateWorld()
+            }
         })
         
     }
@@ -103,7 +105,7 @@ class GameViewModel: ObservableObject {
             print("######## IS MOVING")
             planetRotation = CGAffineTransform(rotationAngle: randomAngle)
         }
-        Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: { (timer) in
+        Timer.scheduledTimer(withTimeInterval: 2, repeats: false, block: { (timer) in
             self.isMoving = false
             print("STOPPED MOVING#####")
         })
