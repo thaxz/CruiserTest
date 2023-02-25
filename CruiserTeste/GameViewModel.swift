@@ -30,9 +30,9 @@ class GameViewModel: ObservableObject {
     lazy var motionManager = CMMotionManager()
     
     init(){
-//        if gameScene == .gameScreen{
-//            setUpGame()
-//        }
+        if gameScene == .gameScreen {
+            
+        }
     }
     
     func animateSpaceship() {
@@ -48,11 +48,23 @@ class GameViewModel: ObservableObject {
             })
       }
     
+    func pauseGame(){
+        showGameOver = false
+        isMoving = false
+        startDate = Date()
+        self.playerRotation = CGAffineTransform(rotationAngle: 0)
+        self.planetRotation = CGAffineTransform(rotationAngle: 0)
+        motionManager.stopDeviceMotionUpdates()
+        self.gameTimer?.invalidate()
+        self.sprintSheetTimer?.invalidate()
+    }
+    
     func setUpGame(){
-        animateSpaceship()
-        Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false) { (timer) in
+        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { (timer) in
+            self.animateSpaceship()
             self.startGame()
             self.showGameOver = false
+           
         }
     }
     
@@ -105,7 +117,7 @@ class GameViewModel: ObservableObject {
             print("######## IS MOVING")
             planetRotation = CGAffineTransform(rotationAngle: randomAngle)
         }
-        Timer.scheduledTimer(withTimeInterval: 2, repeats: false, block: { (timer) in
+        Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false, block: { (timer) in
             self.isMoving = false
             print("STOPPED MOVING#####")
         })
@@ -121,7 +133,7 @@ class GameViewModel: ObservableObject {
         let difference = abs(worldAngle - playerAngle)
         
         // se não estiver dentro daquela área vermelha
-        if difference > 0.40 {
+        if difference > 0.35 {
             // para de repetir o timer
             if let gameTimer = gameTimer {
                 gameTimer.invalidate()
