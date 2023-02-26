@@ -18,6 +18,12 @@ enum GameScenes: String {
     case tutorial
 }
 
+enum GameLevels: String {
+    
+    case earth
+    case planet
+}
+
 struct Dialogues{
     
     let earth: [String] = [
@@ -34,8 +40,4 @@ struct Dialogues{
     
 }
 
-enum GameLevels: String {
-    
-    case earth
-    case planet
-}
+

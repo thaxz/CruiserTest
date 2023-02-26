@@ -14,9 +14,11 @@ struct HomeView: View {
             Color.purple
                 .ignoresSafeArea()
             VStack{
+                Spacer()
                 Text("HOME VIEW")
                     .font(.system(size: 32, weight: .bold))
                     .foregroundColor(.white)
+                Spacer()
                 Button {
                     gameViewModel.gameScene = .levels
                 } label: {
@@ -29,7 +31,7 @@ struct HomeView: View {
                             .font(.system(size: 32, weight: .bold))
                         .foregroundColor(.purple)
                     }
-                } .padding(16)
+                }
                 
                 Button {
                     gameViewModel.gameScene = .tutorial
@@ -43,7 +45,7 @@ struct HomeView: View {
                             .font(.system(size: 32, weight: .bold))
                         .foregroundColor(.purple)
                     }
-                } .padding(16)
+                }
                 
                 Button {
                     gameViewModel.gameScene = .credits
@@ -57,8 +59,8 @@ struct HomeView: View {
                             .font(.system(size: 32, weight: .bold))
                         .foregroundColor(.purple)
                     }
-                } .padding(16)
-            }
+                }
+            }.padding(16)
         }
     }
 }
