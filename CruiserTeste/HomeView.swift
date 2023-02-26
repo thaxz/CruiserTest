@@ -11,56 +11,39 @@ struct HomeView: View {
     @EnvironmentObject var gameViewModel: GameViewModel
     var body: some View {
         ZStack{
-            Color.purple
+            Color.theme.darkerPurple
+            Image("mainMenuPH")
                 .ignoresSafeArea()
-            VStack{
+            VStack(spacing: 20){
                 Spacer()
-                Text("HOME VIEW")
-                    .font(.system(size: 32, weight: .bold))
+                    .frame(height: 30)
+                Text("SOME BIG NAME")
+                    .font(.system(size: 64, weight: .bold))
                     .foregroundColor(.white)
+                    .multilineTextAlignment(.center)
                 Spacer()
                 Button {
                     gameViewModel.gameScene = .levels
-                } label: {
-                    ZStack {
-                        Rectangle()
-                            .frame(maxWidth: .infinity)
-                            .frame(height: 55)
-                            .foregroundColor(.white)
-                        Text("PLAY GAME")
-                            .font(.system(size: 32, weight: .bold))
-                        .foregroundColor(.purple)
-                    }
-                }
+                } label: { PrimaryButton(name: "PLAY", type: .earth) }
                 
                 Button {
                     gameViewModel.gameScene = .tutorial
-                } label: {
-                    ZStack {
-                        Rectangle()
-                            .frame(maxWidth: .infinity)
-                            .frame(height: 55)
-                            .foregroundColor(.white)
-                        Text("INSTRUCTIONS")
-                            .font(.system(size: 32, weight: .bold))
-                        .foregroundColor(.purple)
-                    }
-                }
-                
+                } label: { SecondaryButton(name: "Tutorial") } .tint(.clear)
+                Spacer()
+                    .frame(height: 20)
                 Button {
                     gameViewModel.gameScene = .credits
                 } label: {
-                    ZStack {
-                        Rectangle()
-                            .frame(maxWidth: .infinity)
-                            .frame(height: 55)
+                    ZStack{
+                        Text("credits")
                             .foregroundColor(.white)
-                        Text("CREDITS")
-                            .font(.system(size: 32, weight: .bold))
-                        .foregroundColor(.purple)
-                    }
+                            .font(.system(size: 22, weight: .bold)).underline()
+                    } .tint(.clear)
+                    .frame(height: 50)
                 }
-            }.padding(16)
+            }
+            .padding(16)
+            .padding(.bottom, 16)
         }
     }
 }
