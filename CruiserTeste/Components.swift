@@ -95,11 +95,13 @@ struct TutorialContainer: View {
                 Image(type == 0 ? "xmarkPH" : "checkmarkPH")
                     .resizable()
                     .frame(width: 48, height: 48)
-                    .offset(x: 15, y: 15)
+                    .offset(x: 10, y: 15)
             }
                 Image(type == 0 ? "wrongSpaceshipPH" : "rightSpaceshipPH")
                     .resizable()
-                    .frame(width: 110, height: 110)
+                    .frame(
+                        width: type == 0 ? 110 : 70,
+                        height: type == 0 ? 100 : 85)
                     .scaledToFit()
         }
     }
