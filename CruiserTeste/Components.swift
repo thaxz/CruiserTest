@@ -67,6 +67,7 @@ struct LevelContainer: View {
                     .overlay(
                         RoundedRectangle(cornerRadius: 30)
                             .stroke(.white, lineWidth: 2)
+                            .shadow(color: .white, radius: 5)
                     )
                 Image(type == .earth ? "earthPH" : "moonPH")
                     .resizable()
@@ -75,7 +76,7 @@ struct LevelContainer: View {
             }
             Text(type == .earth ? "Earth" : "Moon")
                 .foregroundColor(.white)
-                .font(.system(size: 18, weight: .medium))
+                .font(.system(size: 20, weight: .bold))
         }
     }
 }
