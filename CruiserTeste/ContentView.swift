@@ -21,7 +21,7 @@ struct ContentView: View {
             DialogueView(level: gameViewModel.selectedLevel)
                 .environmentObject(gameViewModel)
         case .gameScreen:
-            GameView()
+            GameView(level: gameViewModel.selectedLevel)
                 .environmentObject(gameViewModel)
         case .credits:
             CreditsView()
