@@ -44,7 +44,7 @@ struct DialogueContainer: View {
     var body: some View {
         ZStack(alignment: .topLeading){
             Rectangle()
-                .foregroundColor(type == .earth ? Color.theme.mediumPurple : Color.theme.mediumBlue)
+                .foregroundColor(type == .earth ? Color.theme.darkerPurple : Color.theme.darkerBlue)
                 .opacity(0.80)
                 .border(.white, width: 3)
             Text(text)
@@ -108,6 +108,24 @@ struct TutorialContainer: View {
     }
 }
 
+struct LocationContainer: View {
+    let type: GameLevels
+    var body: some View{
+        HStack {
+            Text(type == .earth ? "EARTH SPACE STATION" : "MOON SPACE STATION")
+                .padding(.leading)
+                .frame(maxWidth: .infinity, alignment: .center)
+                .frame(height: 55)
+                .background(type == .earth ? Color.theme.darkerPurple : Color.theme.darkerBlue)
+                .font(.system(size: 22, weight: .bold))
+                .foregroundColor(.white)
+                .shadow(color: .black.opacity(0.2), radius: 3)
+            Spacer()
+                .frame(width: 60)
+        }
+    }
+}
+
 
 struct ComponentsTest_PreviewProvider: PreviewProvider {
     static var previews: some View {
@@ -122,6 +140,7 @@ struct ComponentsTest_PreviewProvider: PreviewProvider {
                     LevelContainer(type: .earth)
                     TutorialContainer(type: 1)
                 }
+                LocationContainer(type: .earth)
             }
         }
     }
