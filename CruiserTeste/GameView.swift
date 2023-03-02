@@ -47,10 +47,25 @@ struct GameView: View {
                         }
                         VStack{
                             Spacer()
+                                .frame(height: 50)
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 10)
+                                    .frame(width: 135, height: 40)
+                                    .foregroundColor(.clear)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .stroke(.white, lineWidth: 2)
+                                )
+                                Text("00:\(gameViewModel.secondsPlaying)")
+                                    .font(.system(size: 20, weight: .semibold))
+                                    .foregroundColor(.white)
+                            }
+                            Spacer()
                             Image(uiImage: images[gameViewModel.index])
                                 .resizable()
                                 .frame(width: 100, height: 200)
                                 .transformEffect(gameViewModel.playerRotation)
+                            Spacer()
                             Spacer()
                             Spacer()
                             Spacer()
@@ -60,9 +75,13 @@ struct GameView: View {
             if gameViewModel.showGameOver {
                 GameOverView()
             }
+            if gameViewModel.showWin {
+                WinView()
+            }
         } 
     }
 }
+
 
 struct GameView_Previews: PreviewProvider {
     static var previews: some View {

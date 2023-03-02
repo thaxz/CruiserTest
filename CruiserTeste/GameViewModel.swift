@@ -14,26 +14,23 @@ class GameViewModel: ObservableObject {
     @Published var gameScene: GameScenes = .home
     @Published var selectedLevel: GameLevels = .earth
     
-    var sprintSheetTimer : Timer?
     @Published var index = 0
-    @Published var secondsPlayed: String = "error"
+    @Published var secondsPlayed: String = "00"
+    @Published var secondsPlaying = 00
+    
+    var sprintSheetTimer: Timer?
+    var rotationTimer: Timer?
+    var startDate: Date?
+    var winTimer: Timer?
     
     @Published var isMoving: Bool = false
-    var gameTimer: Timer?
-    var startDate: Date?
-    
     @Published var showGameOver: Bool = false
+    @Published var showWin: Bool = false
     
     @Published var playerRotation = CGAffineTransform(rotationAngle: 0)
     @Published var planetRotation = CGAffineTransform(rotationAngle: 0)
     
     lazy var motionManager = CMMotionManager()
-    
-    init(){
-        if gameScene == .gameScreen {
-            
-        }
-    }
     
     func animateSpaceship() {
             index = 0
@@ -49,26 +46,29 @@ class GameViewModel: ObservableObject {
       }
     
     func pauseGame(){
+        secondsPlaying = 0
         showGameOver = false
         isMoving = false
-        startDate = Date()
+        //startDate = Date()
         self.playerRotation = CGAffineTransform(rotationAngle: 0)
         self.planetRotation = CGAffineTransform(rotationAngle: 0)
         motionManager.stopDeviceMotionUpdates()
-        self.gameTimer?.invalidate()
+        self.rotationTimer?.invalidate()
         self.sprintSheetTimer?.invalidate()
+        self.winTimer?.invalidate()
     }
     
     func setUpGame(){
         Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { (timer) in
-            self.animateSpaceship()
             self.startGame()
             self.showGameOver = false
-           
         }
     }
     
     func startGame(){
+        self.animateSpaceship()
+        secondsPlaying = 0
+        self.checkWin()
         showGameOver = false
         isMoving = false
         // pegando a data que começou
@@ -100,12 +100,11 @@ class GameViewModel: ObservableObject {
             }
         }
         // nível default terra gira a 4s
-        gameTimer = Timer.scheduledTimer(withTimeInterval: 4, repeats: true, block: { (timer) in
+        rotationTimer = Timer.scheduledTimer(withTimeInterval: 4, repeats: true, block: { (timer) in
             if self.showGameOver == false {
                 self.rotateWorld()
             }
         })
-        
     }
     
     func rotateWorld(){
@@ -123,6 +122,21 @@ class GameViewModel: ObservableObject {
         })
     }
     
+    func checkWin(){
+        winTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { time in
+            if self.secondsPlaying >= 0 {
+                self.secondsPlaying += 1
+                print("\(self.secondsPlaying) SEGUNDOS" )
+            } else if self.secondsPlaying >= 10 {
+                print("WIN")
+                self.showWin = true
+                self.showGameOver = false
+                self.pauseGame()
+                self.secondsPlaying = 0
+            }
+        }
+    }
+    
     func checkGameOver(){
         // vai pegar o angulo do jogador e do mundo e comparar
         // angulo do mundo
@@ -134,16 +148,17 @@ class GameViewModel: ObservableObject {
         
         // se não estiver dentro daquela área vermelha
         if difference > 0.35 {
+            pauseGame()
+            self.winTimer?.invalidate()
             // para de repetir o timer
-            if let gameTimer = gameTimer {
-                gameTimer.invalidate()
+            if let rotationTimer = rotationTimer {
+                rotationTimer.invalidate()
             }
             // para de checar os updates
             motionManager.stopDeviceMotionUpdates()
             // quanto tempo se passou até o gameOver
             if let startDate = startDate {
                 secondsPlayed = String(format: "%.2f", Date().timeIntervalSince(startDate))
-                //String(Date().timeIntervalSince(startDate))
             }
             // aparece a tela
             showGameOver = true
