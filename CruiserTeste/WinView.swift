@@ -36,6 +36,7 @@ struct WinView: View {
                 Button {
                     gameViewModel.playAgain()
                     gameViewModel.showGameOver = false
+                    gameViewModel.showWin = false
                 } label: { PrimaryButton(name: "Next Level", type: .earth) }
                 
                 Button {

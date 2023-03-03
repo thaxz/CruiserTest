@@ -46,10 +46,9 @@ class GameViewModel: ObservableObject {
       }
     
     func pauseGame(){
-        secondsPlaying = 0
+        secondsPlaying = 00
         showGameOver = false
         isMoving = false
-        //startDate = Date()
         self.playerRotation = CGAffineTransform(rotationAngle: 0)
         self.planetRotation = CGAffineTransform(rotationAngle: 0)
         motionManager.stopDeviceMotionUpdates()
@@ -67,7 +66,7 @@ class GameViewModel: ObservableObject {
     
     func startGame(){
         self.animateSpaceship()
-        secondsPlaying = 0
+        secondsPlaying = 00
         self.checkWin()
         showGameOver = false
         isMoving = false
@@ -124,13 +123,12 @@ class GameViewModel: ObservableObject {
     
     func checkWin(){
         winTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { time in
-            if self.secondsPlaying >= 0 {
+            if self.secondsPlaying < 30 {
                 self.secondsPlaying += 1
                 print("\(self.secondsPlaying) SEGUNDOS" )
-            } else if self.secondsPlaying >= 10 {
-                print("WIN")
+            } else {
+                print("WIN#######333333")
                 self.showWin = true
-                self.showGameOver = false
                 self.pauseGame()
                 self.secondsPlaying = 0
             }
@@ -149,13 +147,6 @@ class GameViewModel: ObservableObject {
         // se não estiver dentro daquela área vermelha
         if difference > 0.35 {
             pauseGame()
-            self.winTimer?.invalidate()
-            // para de repetir o timer
-            if let rotationTimer = rotationTimer {
-                rotationTimer.invalidate()
-            }
-            // para de checar os updates
-            motionManager.stopDeviceMotionUpdates()
             // quanto tempo se passou até o gameOver
             if let startDate = startDate {
                 secondsPlayed = String(format: "%.2f", Date().timeIntervalSince(startDate))
