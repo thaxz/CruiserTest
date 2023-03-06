@@ -34,8 +34,7 @@ struct GameView: View {
             if gameViewModel.showGameOver {
                 GameOverView()
             }
-        }
-            
+        } 
     }
 }
 

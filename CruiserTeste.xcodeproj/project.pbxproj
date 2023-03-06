@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E94158E329AC00B10088D068 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94158E229AC00B10088D068 /* ColorExtension.swift */; };
 		E9687BFE299D3146004040CD /* CruiserTesteApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9687BFD299D3146004040CD /* CruiserTesteApp.swift */; };
 		E9687C00299D3146004040CD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9687BFF299D3146004040CD /* ContentView.swift */; };
 		E9687C02299D3147004040CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9687C01299D3147004040CD /* Assets.xcassets */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E94158E229AC00B10088D068 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		E9687BFA299D3146004040CD /* CruiserTeste.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CruiserTeste.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9687BFD299D3146004040CD /* CruiserTesteApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CruiserTesteApp.swift; sourceTree = "<group>"; };
 		E9687BFF299D3146004040CD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 				E9687C01299D3147004040CD /* Assets.xcassets */,
 				E9687C03299D3147004040CD /* Preview Content */,
 				E99CAF9F299E65B800DA59E4 /* PreviewProviderExtension.swift */,
+				E94158E229AC00B10088D068 /* ColorExtension.swift */,
 			);
 			path = CruiserTeste;
 			sourceTree = "<group>";
@@ -179,6 +182,7 @@
 				E99CAF9C299E645300DA59E4 /* GameView.swift in Sources */,
 				E9FE32E329A685A0003DE808 /* GameOverView.swift in Sources */,
 				E9687BFE299D3146004040CD /* CruiserTesteApp.swift in Sources */,
+				E94158E329AC00B10088D068 /* ColorExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

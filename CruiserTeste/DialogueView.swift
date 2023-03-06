@@ -99,6 +99,8 @@ struct DialogueView: View {
                     }
                 } .padding(16)
             }
+        } .onAppear{
+            gameViewModel.pauseGame()
         }
     }
 }
