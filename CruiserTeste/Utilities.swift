@@ -24,6 +24,12 @@ enum GameLevels: String {
     case planet
 }
 
+enum ButtonTypes: String {
+    
+    case primary
+    case secondary
+}
+
 struct Dialogues{
     
     let earth: [String] = [

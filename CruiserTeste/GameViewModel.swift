@@ -123,7 +123,7 @@ class GameViewModel: ObservableObject {
             }
         })
         
-        Timer.scheduledTimer(withTimeInterval: 5, repeats: false, block: { (timer) in
+        Timer.scheduledTimer(withTimeInterval: 6, repeats: false, block: { (timer) in
                 self.showInstructions = false
         })
     }

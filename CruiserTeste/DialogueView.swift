@@ -59,7 +59,7 @@ struct DialogueView: View {
                                 gameViewModel.gameScene = .gameScreen
                                 gameViewModel.setUpGame()
                             }
-                        } label: { DialogueSecondaryButton(name: "next") } .tint(.clear)
+                        } label: { DialoguePrimaryButton(type: gameViewModel.selectedLevel, name: "next") } .tint(.clear)
                     }
                     Spacer()
                         .frame(height: 20)
@@ -71,12 +71,29 @@ struct DialogueView: View {
     }
 }
 
+struct DialoguePrimaryButton: View {
+    let type: GameLevels
+    let name: String
+    var body: some View {
+        ZStack{
+            Rectangle()
+                .border(.white, width: 2)
+                .foregroundColor(type == .earth ? Color.theme.mediumPurple : Color.theme.mediumBlue)
+            Text(name)
+                .foregroundColor(.white)
+                .font(.system(size: 17, weight: .bold))
+        }
+        .frame(width: 100 ,height: 40)
+    }
+}
+
 struct DialogueSecondaryButton: View {
     let name: String
     var body: some View {
         ZStack{
             Rectangle()
                 .border(.white, width: 2)
+                .foregroundColor(.clear)
             Text(name)
                 .foregroundColor(.white)
                 .font(.system(size: 17, weight: .bold))
