@@ -15,6 +15,7 @@ struct WinView: View {
                 .foregroundColor(Color.theme.darkerPurple)
                 .border(.white, width: 3)
             VStack(spacing: 20){
+                Spacer()
                 Text("MISSION COMPLETED")
                     .font(.system(size: 40, weight: .black))
                     .foregroundColor(.white)

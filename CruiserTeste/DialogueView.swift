@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// MARK: - MUDAR BOT˜AO DO NEXT
+
 struct DialogueView: View {
     
     @EnvironmentObject var gameViewModel: GameViewModel
@@ -77,9 +79,9 @@ struct DialogueSecondaryButton: View {
                 .border(.white, width: 2)
             Text(name)
                 .foregroundColor(.white)
-                .font(.system(size: 22, weight: .bold))
+                .font(.system(size: 17, weight: .bold))
         }
-        .frame(width: 100 ,height: 35)
+        .frame(width: 100 ,height: 40)
     }
 }
 
