@@ -38,7 +38,7 @@ struct WinView: View {
                     gameViewModel.playAgain()
                     gameViewModel.showGameOver = false
                     gameViewModel.showWin = false
-                } label: { PrimaryButton(name: "Next Level", type: .earth) }
+                } label: { PrimaryButton(name: "Play Again", type: .earth) }
                 
                 Button {
                     gameViewModel.showGameOver = false

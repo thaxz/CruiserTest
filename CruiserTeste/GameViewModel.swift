@@ -48,6 +48,25 @@ class GameViewModel: ObservableObject {
             })
       }
     
+    func changeValues(){
+        switch self.selectedLevel {
+        case .earth:
+            self.secondsNeeded = 30
+            self.rotationInterval = 4
+        case .planet:
+            self.secondsNeeded = 45
+            self.rotationInterval = 2
+        }
+    }
+    
+    func setUpGame(){
+        changeValues()
+        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { (timer) in
+            self.startGame()
+            self.showGameOver = false
+        }
+    }
+    
     func pauseGame(){
         secondsPlaying = 00
         showGameOver = false
@@ -59,13 +78,6 @@ class GameViewModel: ObservableObject {
         self.sprintSheetTimer?.invalidate()
         self.winTimer?.invalidate()
         UIApplication.shared.isIdleTimerDisabled = false
-    }
-    
-    func setUpGame(){
-        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { (timer) in
-            self.startGame()
-            self.showGameOver = false
-        }
     }
     
     func startGame(){
