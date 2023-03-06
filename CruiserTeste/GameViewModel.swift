@@ -55,6 +55,7 @@ class GameViewModel: ObservableObject {
         self.rotationTimer?.invalidate()
         self.sprintSheetTimer?.invalidate()
         self.winTimer?.invalidate()
+        UIApplication.shared.isIdleTimerDisabled = false
     }
     
     func setUpGame(){
@@ -65,6 +66,8 @@ class GameViewModel: ObservableObject {
     }
     
     func startGame(){
+        UIApplication.shared.isIdleTimerDisabled = true
+        
         self.animateSpaceship()
         secondsPlaying = 00
         self.checkWin()
