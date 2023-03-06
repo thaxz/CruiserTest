@@ -22,6 +22,8 @@ class GameViewModel: ObservableObject {
     var rotationTimer: Timer?
     var startDate: Date?
     var winTimer: Timer?
+    var secondsNeeded: Int = 30
+    var rotationInterval: Double = 4
     
     @Published var isMoving: Bool = false
     @Published var showGameOver: Bool = false
@@ -103,7 +105,7 @@ class GameViewModel: ObservableObject {
             }
         }
         // nível default terra gira a 4s
-        rotationTimer = Timer.scheduledTimer(withTimeInterval: 4, repeats: true, block: { (timer) in
+        rotationTimer = Timer.scheduledTimer(withTimeInterval: self.rotationInterval, repeats: true, block: { (timer) in
             if self.showGameOver == false {
                 self.rotateWorld()
             }
@@ -131,7 +133,7 @@ class GameViewModel: ObservableObject {
     
     func checkWin(){
         winTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { time in
-            if self.secondsPlaying < 30 {
+            if self.secondsPlaying < self.secondsNeeded {
                 self.secondsPlaying += 1
                 print("\(self.secondsPlaying) SEGUNDOS" )
             } else {

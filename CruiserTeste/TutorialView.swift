@@ -24,7 +24,7 @@ struct TutorialView: View {
                     Spacer()
                     TutorialContainer(type: 1)
                 }
-                Text("Rotate your device so that the spaceship is at the same angle as the guidelines")
+                Text("Tilt your device so that the spaceship is at the same angle as the guidelines")
                     .font(.system(size: 22, weight: .medium))
                     .foregroundColor(.white)
                     .multilineTextAlignment(.center)
