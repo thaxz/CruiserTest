@@ -12,11 +12,9 @@ struct GameView: View {
     let images = (0...7).map { UIImage(named: "attack_0\($0)")!}
     var backgroundImage: String
     var groundImage: String
-    
-    var showInstructions: Bool = true
+    let level: GameLevels
     
     @EnvironmentObject var gameViewModel: GameViewModel
-    let level: GameLevels
     
     init(level: GameLevels){
         self.level = level

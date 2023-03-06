@@ -130,12 +130,10 @@ struct InstructionsBanner: View {
     var body: some View {
         ZStack{
             RoundedRectangle(cornerRadius: 50)
-                
                 .foregroundColor(.black.opacity(0.50))
                 .overlay(
                     RoundedRectangle(cornerRadius: 50)
-                        .stroke(.white, lineWidth: 2)
-            )
+                        .stroke(.white, lineWidth: 2))
             HStack{
                 Image("leftArrow")
                 Text("TILT YOUR DEVICE")
@@ -143,7 +141,6 @@ struct InstructionsBanner: View {
                     .font(.system(size: 30, weight: .bold))
                     .multilineTextAlignment(.center)
                 Image("rightArrow")
-                
             } .padding(4)
         }
         .frame(width: 260,height: 150)
