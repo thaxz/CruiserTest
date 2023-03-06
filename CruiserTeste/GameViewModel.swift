@@ -26,6 +26,7 @@ class GameViewModel: ObservableObject {
     @Published var isMoving: Bool = false
     @Published var showGameOver: Bool = false
     @Published var showWin: Bool = false
+    @Published var showInstructions: Bool = true
     
     @Published var playerRotation = CGAffineTransform(rotationAngle: 0)
     @Published var planetRotation = CGAffineTransform(rotationAngle: 0)
@@ -67,7 +68,7 @@ class GameViewModel: ObservableObject {
     
     func startGame(){
         UIApplication.shared.isIdleTimerDisabled = true
-        
+        self.showInstructions = true
         self.animateSpaceship()
         secondsPlaying = 00
         self.checkWin()
@@ -106,6 +107,10 @@ class GameViewModel: ObservableObject {
             if self.showGameOver == false {
                 self.rotateWorld()
             }
+        })
+        
+        Timer.scheduledTimer(withTimeInterval: 5, repeats: false, block: { (timer) in
+                self.showInstructions = false
         })
     }
     
@@ -155,6 +160,7 @@ class GameViewModel: ObservableObject {
                 secondsPlayed = String(format: "%.2f", Date().timeIntervalSince(startDate))
             }
             // aparece a tela
+            showInstructions = false
             showGameOver = true
             print("GAME OVER!!!!!1")
         }

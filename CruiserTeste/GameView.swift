@@ -13,6 +13,8 @@ struct GameView: View {
     var backgroundImage: String
     var groundImage: String
     
+    var showInstructions: Bool = true
+    
     @EnvironmentObject var gameViewModel: GameViewModel
     let level: GameLevels
     
@@ -77,6 +79,14 @@ struct GameView: View {
             }
             if gameViewModel.showWin {
                 WinView()
+            }
+            if gameViewModel.showInstructions {
+                VStack{
+                    Spacer()
+                        .frame(height: 50)
+                    InstructionsBanner()
+                    Spacer()
+                }
             }
         } 
     }
