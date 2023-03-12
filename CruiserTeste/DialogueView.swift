@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-// MARK: - MUDAR BOT˜AO DO NEXT
-
 struct DialogueView: View {
     
     @EnvironmentObject var gameViewModel: GameViewModel

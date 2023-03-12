@@ -16,6 +16,7 @@ enum GameScenes: String {
     case gameScreen
     case credits
     case tutorial
+    case relatory
 }
 
 enum GameLevels: String {

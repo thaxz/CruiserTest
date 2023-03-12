@@ -20,25 +20,25 @@ struct WinView: View {
                     .font(.system(size: 40, weight: .black))
                     .foregroundColor(.white)
                 
-                Text("You collected every information your crew needeed!")
+                Spacer()
+                
+                Text("Congratulations! You managed to have a nice flight")
                     .font(.system(size: 22, weight: .semibold))
                     .foregroundColor(.white)
                 
                 Image("winPH")
                 
-                VStack(spacing: 10){
-                    CollectedInfo(text: "Gravity force:", info: "10")
-                    CollectedInfo(text: "Gravity force:", info: "10")
-                    CollectedInfo(text: "Gravity force:", info: "10")
-                    CollectedInfo(text: "Gravity force:", info: "10")
-                }
+                Text("Check your relatory to see what infos you collected")
+                    .font(.system(size: 22, weight: .semibold))
+                    .foregroundColor(.white)
+                
                 Spacer()
                 
                 Button {
-                    gameViewModel.playAgain()
                     gameViewModel.showGameOver = false
-                    gameViewModel.showWin = false
-                } label: { PrimaryButton(name: "Play Again", type: .earth) }
+                    gameViewModel.pauseGame()
+                    gameViewModel.gameScene = .relatory
+                } label: { PrimaryButton(name: "See Relatory", type: .earth) }
                 
                 Button {
                     gameViewModel.showGameOver = false
@@ -52,22 +52,6 @@ struct WinView: View {
         }
         .padding(.horizontal ,8)
         .padding(.vertical, 30)
-    }
-}
-
-struct CollectedInfo: View{
-    let text: String
-    let info: String
-    var body: some View {
-        HStack {
-            Text(text)
-                .font(.system(size: 20, weight: .medium))
-                .foregroundColor(.white)
-            Spacer()
-            Text(info)
-                .font(.system(size: 20, weight: .medium))
-                .foregroundColor(.white)
-        }
     }
 }
 
