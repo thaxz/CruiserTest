@@ -47,12 +47,12 @@ struct DialogueView: View {
                             gameViewModel.gameScene = .gameScreen
                             gameViewModel.setUpGame()
                             dialoguePosition = 0
-                            
+                            gameViewModel.showWin = false
                         } label: { DialogueSecondaryButton(name: "skip") } .tint(.clear)
                         Spacer()
                         Button {
                             dialoguePosition += 1
-                            if dialoguePosition == 3 {
+                            if dialoguePosition == 7 {
                                 dialoguePosition = 0
                                 gameViewModel.gameScene = .gameScreen
                                 gameViewModel.setUpGame()
