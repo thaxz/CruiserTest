@@ -11,24 +11,41 @@ struct RelatoryView: View {
     @EnvironmentObject var gameViewModel: GameViewModel
     let level: GameLevels
     
+    let data: PlanetsInfo = PlanetsInfo()
+    
     let title: String
     let image: String
     let aboutText: String
     let surfaceText: String
+    let atmosphere: String
+    let gravity: String
+    let pressure: String
+    let speed: String
+    let period: String
     
     init(level: GameLevels){
         self.level = level
         switch level {
         case .earth:
-            self.title = "EARTH RELATORY"
-            self.image = "earthPH"
-            self.aboutText = "TEXTO DA TERRA VAI VIR AQUI"
-            self.surfaceText = "TEXTO DA SUPERFICIE TERRA VAI VIR AQUI EEEEEEEEEEEEEEEEEEEEEE"
+            self.title = data.earthTitle
+            self.image = data.earthImage
+            self.aboutText = data.aboutEarth
+            self.surfaceText = data.earthSurface
+            self.atmosphere = data.earthAtmosphere
+            self.gravity = data.earthGravity
+            self.pressure = data.earthPressure
+            self.speed = data.earthSpeed
+            self.period = data.earthPeriod
         case .planet:
-            self.title = "MOON RELATORY"
-            self.image = "moonPH"
-            self.aboutText = "TEXTO DA SUPERFICIE LUA VAI VIR AQUI EEEEEEEEEEEEEEEEE"
-            self.surfaceText = "TEXTO DA LUA VAI VIR AQUI"
+            self.title = data.moonTitle
+            self.image = data.moonImage
+            self.aboutText = data.aboutMoon
+            self.surfaceText = data.moonSurface
+            self.atmosphere = data.moonAtmosphere
+            self.gravity = data.moonGravity
+            self.pressure = data.moonPressure
+            self.speed = data.moonSpeed
+            self.period = data.moonPeriod
         }
     }
     
@@ -50,15 +67,15 @@ struct RelatoryView: View {
                         RelatorySection(title: "Surface", textBody: surfaceText)
                         
                         Text("Characteristics")
-                            .font(.system(size: 22, weight: .bold))
+                            .font(.system(size: 24, weight: .bold))
                             .foregroundColor(.white)
                         
                         VStack(spacing: 10){
-                            CollectedInfo(text: "Diameter:", info: "10")
-                            CollectedInfo(text: "Shape:", info: "10")
-                            CollectedInfo(text: "Prominent Material:", info: "10")
-                            CollectedInfo(text: "Gravitational Acceleration:", info: "10")
-                            CollectedInfo(text: "Orbital Distance:", info: "10")
+                            CollectedInfo(text: "Atmosphere:", info: atmosphere)
+                            CollectedInfo(text: "Surface Gravity:", info: gravity)
+                            CollectedInfo(text: "Surface Pressure:", info: pressure)
+                            CollectedInfo(text: "Orbital Speed:", info: speed)
+                            CollectedInfo(text: "Orbital Period:", info: period)
                         }
                     }
                 }
@@ -80,10 +97,10 @@ struct RelatorySection: View {
     var body: some View {
         VStack(spacing: 20){
             Text(title)
-                .font(.system(size: 22, weight: .bold))
+                .font(.system(size: 24, weight: .bold))
                 .foregroundColor(.white)
             Text(textBody)
-                .font(.system(size: 20, weight: .medium))
+                .font(.system(size: 22, weight: .medium))
                 .foregroundColor(.white)
         }
     }
@@ -95,11 +112,11 @@ struct CollectedInfo: View{
     var body: some View {
         HStack {
             Text(text)
-                .font(.system(size: 20, weight: .medium))
+                .font(.system(size: 22, weight: .medium))
                 .foregroundColor(.white)
             Spacer()
             Text(info)
-                .font(.system(size: 20, weight: .medium))
+                .font(.system(size: 22, weight: .medium))
                 .foregroundColor(.white)
         }
     }
