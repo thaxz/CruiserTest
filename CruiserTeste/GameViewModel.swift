@@ -17,12 +17,12 @@ class GameViewModel: ObservableObject {
     @Published var index = 0
     @Published var secondsPlayed: String = "00"
     @Published var secondsPlaying = 00
+    @Published var secondsNeeded: Int = 30
     
     var sprintSheetTimer: Timer?
     var rotationTimer: Timer?
     var startDate: Date?
     var winTimer: Timer?
-    var secondsNeeded: Int = 30
     var rotationInterval: Double = 4
     
     @Published var isMoving: Bool = false

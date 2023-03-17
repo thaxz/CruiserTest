@@ -82,7 +82,7 @@ struct GameView: View {
                 VStack{
                     Spacer()
                         .frame(height: 50)
-                    InstructionsBanner()
+                    InstructionsBanner(timeNedeed: gameViewModel.secondsNeeded)
                     Spacer()
                 }
             }

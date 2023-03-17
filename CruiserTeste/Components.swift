@@ -127,21 +127,30 @@ struct LocationContainer: View {
 }
 
 struct InstructionsBanner: View {
+    let timeNedeed: Int
     var body: some View {
         ZStack{
             RoundedRectangle(cornerRadius: 50)
-                .foregroundColor(.black.opacity(0.50))
+                .foregroundColor(.black.opacity(0.80))
                 .overlay(
                     RoundedRectangle(cornerRadius: 50)
                         .stroke(.white, lineWidth: 2))
-            HStack{
-                Image("leftArrow")
-                Text("TILT YOUR DEVICE")
-                    .foregroundColor(.white)
-                    .font(.system(size: 30, weight: .bold))
+            ZStack {
+                HStack{
+                    Image("leftArrow")
+                    Spacer()
+                    Image("rightArrow")
+                } .padding(4)
+                
+                HStack {
+                    Spacer()
+                    Text("TILT FOR \n \(timeNedeed) \n SECONDS")
+                        .foregroundColor(.white)
+                        .font(.system(size: 30, weight: .bold))
                     .multilineTextAlignment(.center)
-                Image("rightArrow")
-            } .padding(4)
+                    Spacer()
+                }
+            }
         }
         .frame(width: 260,height: 150)
     }
@@ -161,7 +170,7 @@ struct ComponentsTest_PreviewProvider: PreviewProvider {
                     TutorialContainer(type: 1)
                 }
                 LocationContainer(type: .earth)
-                InstructionsBanner()
+                InstructionsBanner(timeNedeed: 2)
             }
         }
     }

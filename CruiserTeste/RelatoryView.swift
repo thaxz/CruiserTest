@@ -97,10 +97,10 @@ struct RelatorySection: View {
     var body: some View {
         VStack(spacing: 20){
             Text(title)
-                .font(.system(size: 24, weight: .bold))
+                .font(.system(size: 22, weight: .bold))
                 .foregroundColor(.white)
             Text(textBody)
-                .font(.system(size: 22, weight: .medium))
+                .font(.system(size: 20, weight: .medium))
                 .foregroundColor(.white)
         }
     }
@@ -112,11 +112,11 @@ struct CollectedInfo: View{
     var body: some View {
         HStack {
             Text(text)
-                .font(.system(size: 22, weight: .medium))
+                .font(.system(size: 20, weight: .medium))
                 .foregroundColor(.white)
             Spacer()
             Text(info)
-                .font(.system(size: 22, weight: .medium))
+                .font(.system(size: 20, weight: .medium))
                 .foregroundColor(.white)
         }
     }
