@@ -9,7 +9,7 @@ import SwiftUI
 
 struct GameView: View {
     
-    let images = (0...7).map { UIImage(named: "attack_0\($0)")!}
+    let images = (0...3).map { UIImage(named: "spaceship_0\($0)")!}
     var backgroundImage: String
     var groundImage: String
     let level: GameLevels
@@ -63,7 +63,8 @@ struct GameView: View {
                             Spacer()
                             Image(uiImage: images[gameViewModel.index])
                                 .resizable()
-                                .frame(width: 100, height: 200)
+                                .scaledToFit()
+                                .frame(width: 200, height: 200)
                                 .transformEffect(gameViewModel.playerRotation)
                             Spacer()
                             Spacer()

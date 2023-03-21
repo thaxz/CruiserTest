@@ -38,7 +38,7 @@ class GameViewModel: ObservableObject {
     func animateSpaceship() {
             index = 0
             sprintSheetTimer = Timer.scheduledTimer(withTimeInterval: 0.25, repeats: true, block: {_ in
-                if self.index < 7 {
+                if self.index < 3 {
                     self.index += 1
                     print(self.index)
                 } else if self.sprintSheetTimer != nil {
