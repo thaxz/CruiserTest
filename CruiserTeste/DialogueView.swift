@@ -13,95 +13,91 @@ struct DialogueView: View {
     
     let level: GameLevels
     let dialogue: [String]
-    var backgroundImage: Color
-    var levelName: String
+    var background: String
+    var location: String
     @State var dialoguePosition: Int = 0
     
     init(level: GameLevels){
         self.level = level
         switch level {
         case .earth:
-            self.backgroundImage = .red
-            self.levelName = "EARTH STATION"
+            self.background = "dialogueEarthPH"
+            self.location = "EARTH STATION"
             self.dialogue = Dialogues().earth
         case .planet:
-            self.backgroundImage = .blue
-            self.levelName = "PLANET STATIOM"
+            self.background = "dialogueMoonPH"
+            self.location = "PLANET STATION"
             self.dialogue = Dialogues().planet
         }
     }
     
     var body: some View {
         ZStack{
-            backgroundImage
+            Image(background)
+                .resizable()
                 .ignoresSafeArea()
             VStack(){
                 Spacer()
                     .frame(height: 60)
-                HStack {
-                    Text(levelName)
-                        .padding(.leading)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .frame(height: 55)
-                        .background(.gray)
-                        .font(.system(size: 32, weight: .bold))
-                        .foregroundColor(.white)
-                    Spacer()
-                        .frame(width: 60)
-                }
+                LocationContainer(type: gameViewModel.selectedLevel)
                 Spacer()
-                VStack(alignment: .trailing){
-                    ZStack(alignment: .topLeading){
-                        Rectangle()
-                            .foregroundColor(.gray)
-                        Text(dialogue[dialoguePosition])
-                            .foregroundColor(.white)
-                            .padding(16)
-                        
-                    }
-                    .frame(maxWidth: .infinity)
-                    .frame(height: 160, alignment: .topLeading)
-                    
+                VStack(spacing: 24){
+                    DialogueContainer(text: dialogue[dialoguePosition], type: gameViewModel.selectedLevel)
                     HStack {
                         Button {
                             gameViewModel.gameScene = .gameScreen
                             gameViewModel.setUpGame()
                             dialoguePosition = 0
-                            
-                        } label: {
-                            ZStack {
-                                Rectangle()
-                                    .frame(width: 80,height: 40)
-                                    .foregroundColor(.gray)
-                                Text("SKIP")
-                                    .font(.system(size: 20, weight: .bold))
-                                    .foregroundColor(.white)
-                            }
-                        }
+                            gameViewModel.showWin = false
+                        } label: { DialogueSecondaryButton(name: "skip") } .tint(.clear)
                         Spacer()
                         Button {
                             dialoguePosition += 1
-                            if dialoguePosition == 3 {
+                            if dialoguePosition == 7 {
                                 dialoguePosition = 0
-                                    gameViewModel.gameScene = .gameScreen
-                                    gameViewModel.setUpGame()
+                                gameViewModel.gameScene = .gameScreen
+                                gameViewModel.setUpGame()
                             }
-                        } label: {
-                            ZStack {
-                                Rectangle()
-                                    .frame(width: 80,height: 40)
-                                    .foregroundColor(.gray)
-                                Text("NEXT")
-                                    .font(.system(size: 20, weight: .bold))
-                                    .foregroundColor(.white)
-                            }
-                        }
+                        } label: { DialoguePrimaryButton(type: gameViewModel.selectedLevel, name: "next") } .tint(.clear)
                     }
-                } .padding(16)
+                    Spacer()
+                        .frame(height: 20)
+                } .padding(.horizontal, 16)
             }
         } .onAppear{
             gameViewModel.pauseGame()
         }
+    }
+}
+
+struct DialoguePrimaryButton: View {
+    let type: GameLevels
+    let name: String
+    var body: some View {
+        ZStack{
+            Rectangle()
+                .border(.white, width: 2)
+                .foregroundColor(type == .earth ? Color.theme.mediumPurple : Color.theme.mediumBlue)
+            Text(name)
+                .foregroundColor(.white)
+                .font(.system(size: 17, weight: .bold))
+        }
+        .frame(width: 100 ,height: 40)
+    }
+}
+
+struct DialogueSecondaryButton: View {
+    let name: String
+    var body: some View {
+        ZStack{
+            Rectangle()
+                .border(.white, width: 2)
+                .foregroundColor(.clear)
+            Text(name)
+                .foregroundColor(.white)
+                .font(.system(size: 17, weight: .bold))
+        }
+        .frame(width: 100 ,height: 40)
     }
 }
 

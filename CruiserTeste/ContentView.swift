@@ -21,13 +21,16 @@ struct ContentView: View {
             DialogueView(level: gameViewModel.selectedLevel)
                 .environmentObject(gameViewModel)
         case .gameScreen:
-            GameView()
+            GameView(level: gameViewModel.selectedLevel)
                 .environmentObject(gameViewModel)
         case .credits:
             CreditsView()
                 .environmentObject(gameViewModel)
         case .tutorial:
             TutorialView()
+                .environmentObject(gameViewModel)
+        case .relatory:
+            RelatoryView(level: gameViewModel.selectedLevel)
                 .environmentObject(gameViewModel)
         }
     }

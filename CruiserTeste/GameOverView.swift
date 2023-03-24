@@ -12,69 +12,57 @@ struct GameOverView: View {
     var body: some View {
         ZStack{
             Rectangle()
-                .foregroundColor(.gray)
-            VStack( spacing: 20){
-                Text("Game Over")
-                    .frame(maxWidth: .infinity, alignment: .center)
-                    .font(.system(size: 40, weight: .bold))
-                Circle()
-                    .frame(width: 100, alignment: .center)
-                    .foregroundColor(.purple)
-                VStack(alignment: .leading, spacing: 30){
-                    Text("Thank you for your gravity reports on earth. Here is your relatory:")
-                        .font(.system(size: 22, weight: .medium))
-                    HStack{
-                        Text("Time traveling:")
-                        Spacer()
-                        Text("\(gameViewModel.secondsPlayed)s")
-                    }
-                    HStack{
-                        Text("Gravity force:")
-                        Spacer()
-                        Text("10g")
-                    }
-                    HStack{
-                        Text("Wind velocity:")
-                        Spacer()
-                        Text("10g")
-                    }
+                .foregroundColor(Color.theme.darkerPurple)
+                .border(.white, width: 3)
+            VStack(spacing: 16){
+                Spacer()
+                    //.frame(height: 10)
+                Text("DIZZY \n FLIGHT")
+                    .font(.system(size: 40, weight: .black))
+                    .foregroundColor(.white)
+                    
+                Text("It looks like you lost some balance!")
+                    .font(.system(size: 22, weight: .semibold))
+                    .foregroundColor(.white)
+                
+                Image("failPH")
+
+                Text("Your mission lasted \(gameViewModel.secondsPlayed)s")
+                    .font(.system(size: 20, weight: .semibold))
+                    .foregroundColor(.white)
+                
+                Text("Try to leave your device within the indicated area!")
+                    .font(.system(size: 20, weight: .regular))
+                    .foregroundColor(.white)
+                
                     Spacer()
+                
                     Button {
                         gameViewModel.playAgain()
                         gameViewModel.showGameOver = false
-                    } label: {
-                        ZStack {
-                            Rectangle()
-                                .frame(height: 55)
-                                .foregroundColor(.blue)
-                            Text("Play again")
-                                .foregroundColor(.white)
-                        }
-                    }
+                    } label: { PrimaryButton(name: "Try Again", type: .earth) }
+                
                     Button {
                         gameViewModel.showGameOver = false
                         gameViewModel.pauseGame()
                         gameViewModel.gameScene = .home
-                    } label: {
-                        ZStack {
-                            Rectangle()
-                                .frame(height: 55)
-                                .foregroundColor(.orange)
-                            Text("Main menu")
-                                .foregroundColor(.white)
-                        }
-                    }
-                }
-                .padding(12)
+                    } label: { SecondaryButton(name: "Main Menu") } .tint(.clear)
                 Spacer()
             }
-        }.padding(24)
+            .padding(20)
+            .multilineTextAlignment(.center)
+        }
+        .padding(.horizontal ,8)
+        .padding(.vertical, 30)
     }
 }
 
 struct GameOverView_Previews: PreviewProvider {
     static var previews: some View {
-        GameOverView()
-            .environmentObject(dev.gameVM)
+        ZStack{
+            Color.black
+            GameOverView()
+                .environmentObject(dev.gameVM)
+        }
     }
 }

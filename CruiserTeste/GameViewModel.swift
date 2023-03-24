@@ -14,31 +14,31 @@ class GameViewModel: ObservableObject {
     @Published var gameScene: GameScenes = .home
     @Published var selectedLevel: GameLevels = .earth
     
-    var sprintSheetTimer : Timer?
     @Published var index = 0
-    @Published var secondsPlayed: String = "error"
+    @Published var secondsPlayed: String = "00"
+    @Published var secondsPlaying = 00
+    @Published var secondsNeeded: Int = 30
+    
+    var sprintSheetTimer: Timer?
+    var rotationTimer: Timer?
+    var startDate: Date?
+    var winTimer: Timer?
+    var rotationInterval: Double = 4
     
     @Published var isMoving: Bool = false
-    var gameTimer: Timer?
-    var startDate: Date?
-    
     @Published var showGameOver: Bool = false
+    @Published var showWin: Bool = false
+    @Published var showInstructions: Bool = true
     
     @Published var playerRotation = CGAffineTransform(rotationAngle: 0)
     @Published var planetRotation = CGAffineTransform(rotationAngle: 0)
     
     lazy var motionManager = CMMotionManager()
     
-    init(){
-        if gameScene == .gameScreen {
-            
-        }
-    }
-    
     func animateSpaceship() {
             index = 0
             sprintSheetTimer = Timer.scheduledTimer(withTimeInterval: 0.25, repeats: true, block: {_ in
-                if self.index < 7 {
+                if self.index < 3 {
                     self.index += 1
                     print(self.index)
                 } else if self.sprintSheetTimer != nil {
@@ -48,27 +48,44 @@ class GameViewModel: ObservableObject {
             })
       }
     
-    func pauseGame(){
-        showGameOver = false
-        isMoving = false
-        startDate = Date()
-        self.playerRotation = CGAffineTransform(rotationAngle: 0)
-        self.planetRotation = CGAffineTransform(rotationAngle: 0)
-        motionManager.stopDeviceMotionUpdates()
-        self.gameTimer?.invalidate()
-        self.sprintSheetTimer?.invalidate()
-    }
-    
-    func setUpGame(){
-        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { (timer) in
-            self.animateSpaceship()
-            self.startGame()
-            self.showGameOver = false
-           
+    func changeValues(){
+        switch self.selectedLevel {
+        case .earth:
+            self.secondsNeeded = 30
+            self.rotationInterval = 4
+        case .planet:
+            self.secondsNeeded = 45
+            self.rotationInterval = 2
         }
     }
     
+    func setUpGame(){
+        changeValues()
+        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { (timer) in
+            self.startGame()
+            self.showGameOver = false
+        }
+    }
+    
+    func pauseGame(){
+        secondsPlaying = 00
+        showGameOver = false
+        isMoving = false
+        self.playerRotation = CGAffineTransform(rotationAngle: 0)
+        self.planetRotation = CGAffineTransform(rotationAngle: 0)
+        motionManager.stopDeviceMotionUpdates()
+        self.rotationTimer?.invalidate()
+        self.sprintSheetTimer?.invalidate()
+        self.winTimer?.invalidate()
+        UIApplication.shared.isIdleTimerDisabled = false
+    }
+    
     func startGame(){
+        UIApplication.shared.isIdleTimerDisabled = true
+        self.showInstructions = true
+        self.animateSpaceship()
+        secondsPlaying = 00
+        self.checkWin()
         showGameOver = false
         isMoving = false
         // pegando a data que começou
@@ -100,12 +117,15 @@ class GameViewModel: ObservableObject {
             }
         }
         // nível default terra gira a 4s
-        gameTimer = Timer.scheduledTimer(withTimeInterval: 4, repeats: true, block: { (timer) in
+        rotationTimer = Timer.scheduledTimer(withTimeInterval: self.rotationInterval, repeats: true, block: { (timer) in
             if self.showGameOver == false {
                 self.rotateWorld()
             }
         })
         
+        Timer.scheduledTimer(withTimeInterval: 6, repeats: false, block: { (timer) in
+                self.showInstructions = false
+        })
     }
     
     func rotateWorld(){
@@ -123,6 +143,20 @@ class GameViewModel: ObservableObject {
         })
     }
     
+    func checkWin(){
+        winTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { time in
+            if self.secondsPlaying < self.secondsNeeded {
+                self.secondsPlaying += 1
+                print("\(self.secondsPlaying) SEGUNDOS" )
+            } else {
+                print("WIN#######333333")
+                self.showWin = true
+                self.pauseGame()
+                self.secondsPlaying = 0
+            }
+        }
+    }
+    
     func checkGameOver(){
         // vai pegar o angulo do jogador e do mundo e comparar
         // angulo do mundo
@@ -134,18 +168,13 @@ class GameViewModel: ObservableObject {
         
         // se não estiver dentro daquela área vermelha
         if difference > 0.35 {
-            // para de repetir o timer
-            if let gameTimer = gameTimer {
-                gameTimer.invalidate()
-            }
-            // para de checar os updates
-            motionManager.stopDeviceMotionUpdates()
+            pauseGame()
             // quanto tempo se passou até o gameOver
             if let startDate = startDate {
                 secondsPlayed = String(format: "%.2f", Date().timeIntervalSince(startDate))
-                //String(Date().timeIntervalSince(startDate))
             }
             // aparece a tela
+            showInstructions = false
             showGameOver = true
             print("GAME OVER!!!!!1")
         }

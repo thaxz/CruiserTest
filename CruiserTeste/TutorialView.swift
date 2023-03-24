@@ -11,26 +11,29 @@ struct TutorialView: View {
     @EnvironmentObject var gameViewModel: GameViewModel
     var body: some View {
         ZStack{
-            Color.white
+            Color.theme.darkerPurple
+            Image("levelBgPH")
                 .ignoresSafeArea()
-            VStack{
-                Text("TUTORIAL VIEW")
-                    .font(.system(size: 32, weight: .bold))
-                    .foregroundColor(.black)
+            VStack(spacing: 50){
+                Spacer()
+                Text("This is a game of equilibrium")
+                    .font(.system(size: 22, weight: .bold))
+                    .foregroundColor(.white)
+                HStack{
+                    TutorialContainer(type: 0)
+                    Spacer()
+                    TutorialContainer(type: 1)
+                }
+                Text("Tilt your device so that the spaceship is at the same angle as the guidelines")
+                    .font(.system(size: 22, weight: .medium))
+                    .foregroundColor(.white)
+                    .multilineTextAlignment(.center)
+                
                 Button {
                     gameViewModel.gameScene = .home
-                } label: {
-                    ZStack {
-                        Rectangle()
-                            .frame(maxWidth: .infinity)
-                            .frame(height: 55)
-                            .foregroundColor(.black)
-                        Text("back to menu")
-                            .font(.system(size: 32, weight: .bold))
-                        .foregroundColor(.white)
-                    }
-                } .padding(16)
-            }
+                } label: { PrimaryButton(name: "Back to Menu", type: .earth)} .tint(.clear)
+                Spacer()
+            }.padding(16)
         }
     }
 }

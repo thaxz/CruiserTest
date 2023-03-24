@@ -20,5 +20,6 @@ struct ColorTheme {
     let darkerPurple = Color("darkerPurple")
     let mediumBlue = Color("mediumBlue")
     let darkerBlue = Color("darkerBlue")
-    
+    let darkerGray = Color("darkerGray")
 }
+
