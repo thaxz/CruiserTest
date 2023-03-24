@@ -36,7 +36,6 @@ struct DialogueView: View {
         ZStack{
             Image(background)
                 .resizable()
-                .ignoresSafeArea()
             VStack(){
                 Spacer()
                     .frame(height: 60)
@@ -66,7 +65,9 @@ struct DialogueView: View {
                         .frame(height: 20)
                 } .padding(.horizontal, 16)
             }
-        } .onAppear{
+        }
+        .ignoresSafeArea()
+        .onAppear{
             typeWriter()
             gameViewModel.pauseGame()
         }

@@ -14,7 +14,6 @@ struct HomeView: View {
             Color.theme.darkerPurple
             Image("mainMenuPH")
                 .resizable()
-                .ignoresSafeArea()
             VStack(spacing: 20){
                 Spacer()
                     .frame(height: 30)
@@ -46,6 +45,7 @@ struct HomeView: View {
             .padding(16)
             .padding(.bottom, 16)
         }
+        .ignoresSafeArea()
     }
 }
 

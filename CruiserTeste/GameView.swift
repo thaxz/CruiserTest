@@ -33,7 +33,6 @@ struct GameView: View {
             Color.theme.darkerPurple
             Image(backgroundImage)
                 .resizable()
-                .ignoresSafeArea()
                     ZStack(){
                         VStack {
                             Spacer()
@@ -88,7 +87,8 @@ struct GameView: View {
                     Spacer()
                 }
             }
-        } 
+        }
+        .ignoresSafeArea()
     }
 }
 

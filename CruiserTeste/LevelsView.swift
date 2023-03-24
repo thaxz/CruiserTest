@@ -14,7 +14,6 @@ struct LevelsView: View {
             Color.theme.darkerPurple
             Image("levelBgPH")
                 .resizable()
-                .ignoresSafeArea()
             VStack(spacing: 60){
                 Spacer()
                 Text("Choose your mission")
@@ -36,6 +35,7 @@ struct LevelsView: View {
                 }
             }
         }
+        .ignoresSafeArea()
     }
 }
 
