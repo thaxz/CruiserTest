@@ -101,9 +101,9 @@ struct TutorialContainer: View {
                 Image(type == 0 ? "wrongSpaceshipPH" : "rightSpaceshipPH")
                     .resizable()
                     .frame(
-                        width: type == 0 ? 110 : 70,
+                        width: type == 0 ? 110 : 85,
                         height: type == 0 ? 100 : 85)
-                    .scaledToFit()
+                    .scaledToFill()
         }
     }
 }

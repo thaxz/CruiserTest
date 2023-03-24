@@ -23,7 +23,7 @@ struct GameView: View {
             self.backgroundImage = "earthSkyPH"
             self.groundImage = "earthGroundPH"
         case .planet:
-            self.backgroundImage = "moonSkyPH"
+            self.backgroundImage = "bgMoon"
             self.groundImage = "moonGroundPH"
         }
     }
