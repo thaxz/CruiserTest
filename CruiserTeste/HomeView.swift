@@ -13,6 +13,7 @@ struct HomeView: View {
         ZStack{
             Color.theme.darkerPurple
             Image("mainMenuPH")
+                .resizable()
                 .ignoresSafeArea()
             VStack(spacing: 20){
                 Spacer()

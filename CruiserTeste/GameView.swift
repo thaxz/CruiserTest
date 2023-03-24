@@ -32,6 +32,7 @@ struct GameView: View {
         ZStack {
             Color.theme.darkerPurple
             Image(backgroundImage)
+                .resizable()
                 .ignoresSafeArea()
                     ZStack(){
                         VStack {

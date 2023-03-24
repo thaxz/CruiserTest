@@ -34,6 +34,7 @@ struct DialogueView: View {
     var body: some View {
         ZStack{
             Image(background)
+                .resizable()
                 .ignoresSafeArea()
             VStack(){
                 Spacer()

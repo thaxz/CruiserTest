@@ -13,6 +13,7 @@ struct LevelsView: View {
         ZStack{
             Color.theme.darkerPurple
             Image("levelBgPH")
+                .resizable()
                 .ignoresSafeArea()
             VStack(spacing: 60){
                 Spacer()
