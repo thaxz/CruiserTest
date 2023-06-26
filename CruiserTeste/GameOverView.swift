@@ -16,7 +16,6 @@ struct GameOverView: View {
                 .border(.white, width: 3)
             VStack(spacing: 16){
                 Spacer()
-                    //.frame(height: 10)
                 Text("DIZZY \n FLIGHT")
                     .font(.system(size: 40, weight: .black))
                     .foregroundColor(.white)

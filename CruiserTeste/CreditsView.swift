@@ -13,7 +13,6 @@ struct CreditsView: View {
         ZStack{
             Image("levelBgPH")
                 .resizable()
-                .ignoresSafeArea()
                 VStack(spacing: 20){
                     Spacer()
                     
@@ -43,6 +42,7 @@ struct CreditsView: View {
                 }
                 .padding(16)
         }
+        .ignoresSafeArea()
     }
 }
 

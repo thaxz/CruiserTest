@@ -15,6 +15,7 @@ struct DialogueView: View {
     let dialogue: [String]
     var background: String
     var location: String
+    @State var text: String = ""
     @State var dialoguePosition: Int = 0
     
     init(level: GameLevels){
@@ -35,14 +36,13 @@ struct DialogueView: View {
         ZStack{
             Image(background)
                 .resizable()
-                .ignoresSafeArea()
             VStack(){
                 Spacer()
                     .frame(height: 60)
                 LocationContainer(type: gameViewModel.selectedLevel)
                 Spacer()
                 VStack(spacing: 24){
-                    DialogueContainer(text: dialogue[dialoguePosition], type: gameViewModel.selectedLevel)
+                    DialogueContainer(text: text, type: gameViewModel.selectedLevel)
                     HStack {
                         Button {
                             gameViewModel.gameScene = .gameScreen
@@ -52,6 +52,7 @@ struct DialogueView: View {
                         } label: { DialogueSecondaryButton(name: "skip") } .tint(.clear)
                         Spacer()
                         Button {
+                            typeWriter()
                             dialoguePosition += 1
                             if dialoguePosition == 7 {
                                 dialoguePosition = 0
@@ -64,10 +65,27 @@ struct DialogueView: View {
                         .frame(height: 20)
                 } .padding(.horizontal, 16)
             }
-        } .onAppear{
+        }
+        .ignoresSafeArea()
+        .onAppear{
+            typeWriter()
             gameViewModel.pauseGame()
         }
     }
+    
+    
+    func typeWriter(at position: Int = 0) {
+            if position == 0 {
+                text = ""
+            }
+            if position < dialogue[dialoguePosition].count {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
+                    text.append(dialogue[dialoguePosition][position])
+                    typeWriter(at: position + 1)
+                }
+            }
+        }
+    
 }
 
 struct DialoguePrimaryButton: View {

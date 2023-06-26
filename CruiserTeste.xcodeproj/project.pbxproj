@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E9027D4D29C3548100600AC4 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9027D4C29C3548100600AC4 /* Data.swift */; };
+		E929A6B929CDE06200F77233 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E929A6B829CDE06200F77233 /* StringExtension.swift */; };
 		E94158E329AC00B10088D068 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94158E229AC00B10088D068 /* ColorExtension.swift */; };
 		E94158E529AC023D0088D068 /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94158E429AC023D0088D068 /* Components.swift */; };
 		E9687BFE299D3146004040CD /* CruiserTesteApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9687BFD299D3146004040CD /* CruiserTesteApp.swift */; };
@@ -30,6 +31,7 @@
 
 /* Begin PBXFileReference section */
 		E9027D4C29C3548100600AC4 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		E929A6B829CDE06200F77233 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		E94158E229AC00B10088D068 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		E94158E429AC023D0088D068 /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
 		E9687BFA299D3146004040CD /* CruiserTeste.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CruiserTeste.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -99,6 +101,7 @@
 				E9687C03299D3147004040CD /* Preview Content */,
 				E99CAF9F299E65B800DA59E4 /* PreviewProviderExtension.swift */,
 				E94158E229AC00B10088D068 /* ColorExtension.swift */,
+				E929A6B829CDE06200F77233 /* StringExtension.swift */,
 				E94158E429AC023D0088D068 /* Components.swift */,
 			);
 			path = CruiserTeste;
@@ -196,6 +199,7 @@
 				E9E2EAE729A7AF02001924FE /* TutorialView.swift in Sources */,
 				E99CAF9C299E645300DA59E4 /* GameView.swift in Sources */,
 				E9027D4D29C3548100600AC4 /* Data.swift in Sources */,
+				E929A6B929CDE06200F77233 /* StringExtension.swift in Sources */,
 				E9FE32E329A685A0003DE808 /* GameOverView.swift in Sources */,
 				E9687BFE299D3146004040CD /* CruiserTesteApp.swift in Sources */,
 				E94158E329AC00B10088D068 /* ColorExtension.swift in Sources */,

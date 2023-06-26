@@ -13,7 +13,7 @@ struct TutorialView: View {
         ZStack{
             Color.theme.darkerPurple
             Image("levelBgPH")
-                .ignoresSafeArea()
+                .resizable()
             VStack(spacing: 50){
                 Spacer()
                 Text("This is a game of equilibrium")
@@ -35,6 +35,7 @@ struct TutorialView: View {
                 Spacer()
             }.padding(16)
         }
+        .ignoresSafeArea()
     }
 }
 
